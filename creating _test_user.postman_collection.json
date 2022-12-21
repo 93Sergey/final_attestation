@@ -1,0 +1,535 @@
+{
+	"info": {
+		"_postman_id": "b9df74f0-545e-4139-b60e-a7473a0fe391",
+		"name": "creating _test_user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19666397"
+	},
+	"item": [
+		{
+			"name": "Authorization_test_user",
+			"item": [
+				{
+					"name": "Authorization_test_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "SergeySergey",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "db31a4ab9d",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://test-stand.gb.ru/gateway/login",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"gateway",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Лента_своих_постов",
+			"item": [
+				{
+					"name": "Request_existing_page_order(ASC)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?sort=createdAt&order=ASC&page=0",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request_existing_page_order(DESC)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?sort=createdAt&order=DESC&page=0",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request_ not_existing_page",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?sort=createdAt&order=ASC&page=8",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "page",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Лента_чужих_постов",
+			"item": [
+				{
+					"name": "Request_existing_page",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?owner=notMe&sort=createdAt&order=ASC&page=0",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "notMe"
+								},
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request_existing_page_order(ASC)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?owner=notMe&sort=createdAt&order=ASC&page=0",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "notMe"
+								},
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request_existing_page_order(DESC)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?owner=notMe&sort=createdAt&order=DESC&page=0",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "notMe"
+								},
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request_existing_page_order(ALL)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?owner=notMe&sort=createdAt&order=ALL&page=0",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "notMe"
+								},
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "ALL"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request_not_existing_page",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://test-stand.gb.ru/api/posts?owner=notMe&sort=createdAt&order=ASC&page=4000",
+							"protocol": "https",
+							"host": [
+								"test-stand",
+								"gb",
+								"ru"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "notMe"
+								},
+								{
+									"key": "sort",
+									"value": "createdAt"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "page",
+									"value": "4000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

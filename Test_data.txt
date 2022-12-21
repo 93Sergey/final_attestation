@@ -1,0 +1,13 @@
+Данные JIRA баг репорты
+email:baleja8145@miarr.com
+
+login:final attestation 
+
+password:CeNDnm3.jm.89:S
+
+Чек-лист
+https://docs.google.com/spreadsheets/d/1AdY7vvmbw1nWID5vZOo1wmJh638SwIzGu918XcQHpxM/edit?usp=sharing
+
+Отчет о тестировании
+https://docs.google.com/document/d/1ymAlGEX-4qyuA8GMWlwLYE_x0swRd0cuxqIQSk2duS8/edit?usp=sharing
+
